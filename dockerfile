@@ -52,4 +52,10 @@ WORKDIR /app
 # Expose port 12393 (the new default port)
 EXPOSE 12393
 
-CMD ["python3", "server.py"]
+
+# --- Auto-Generated Entrypoint Configuration ---
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+RUN mkdir -p /var/log && touch /var/log/app.log
+EXPOSE 12393
+ENTRYPOINT ["/entrypoint.sh"]
